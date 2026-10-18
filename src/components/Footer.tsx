@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const navigation = [
   { label: "About", href: "#about", number: "01" },
@@ -107,7 +108,11 @@ function SocialIcon({ name }: { name: string }) {
 }
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="relative isolate overflow-hidden border-t border-[var(--border)] bg-[var(--background)]"
@@ -206,8 +211,8 @@ export default function Footer() {
                         : undefined
                     }
                     className={`flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--border)] bg-[var(--background-secondary)] text-[var(--foreground-secondary)] transition-all duration-300 ${isPlaceholder
-                        ? "cursor-not-allowed opacity-40"
-                        : "hover:-translate-y-1 hover:border-[var(--accent)] hover:text-[var(--accent)] hover:shadow-[0_8px_24px_-12px_var(--accent)]"
+                      ? "cursor-not-allowed opacity-40"
+                      : "hover:-translate-y-1 hover:border-[var(--accent)] hover:text-[var(--accent)] hover:shadow-[0_8px_24px_-12px_var(--accent)]"
                       }`}
                   >
                     <SocialIcon name={social.icon} />
@@ -245,7 +250,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col gap-5 border-t border-[var(--border)] py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs leading-5 text-[var(--foreground-muted)]">
-            © {currentYear}{" "}
+            © {currentYear ?? ""}{" "}
             <span className="font-medium text-[var(--foreground-secondary)]">
               Saqlain Ahmad
             </span>
