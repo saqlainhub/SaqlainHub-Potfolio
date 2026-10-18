@@ -1,0 +1,179 @@
+
+@import "tailwindcss";
+
+/* ========================================
+   1. DESIGN TOKENS — DARK THEME (DEFAULT)
+======================================== */
+
+:root {
+  color-scheme: dark;
+
+  --background: #080d18;
+  --background-secondary: #0c1423;
+  --surface: #101a2b;
+  --surface-hover: #152238;
+
+  --foreground: #f2f5fb;
+  --foreground-secondary: #a4afc1;
+  --foreground-muted: #78869c;
+
+  --accent: #91baff;
+  --accent-hover: #b1ceff;
+  --accent-foreground: #080d18;
+  --accent-soft: rgb(145 186 255 / 10%);
+
+  --border: rgb(255 255 255 / 10%);
+  --border-strong: rgb(255 255 255 / 18%);
+
+  --header-background: rgb(8 13 24 / 88%);
+  --selection-background: #91baff;
+  --selection-foreground: #080d18;
+
+  --shadow-color: rgb(0 0 0 / 25%);
+}
+
+/* ========================================
+   2. LIGHT THEME
+   Activated by data-theme="light"
+======================================== */
+
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --background: #f7f9fc;
+  --background-secondary: #edf2f8;
+  --surface: #ffffff;
+  --surface-hover: #edf3fb;
+
+  --foreground: #111827;
+  --foreground-secondary: #475569;
+  --foreground-muted: #64748b;
+
+  --accent: #285fbd;
+  --accent-hover: #194b9f;
+  --accent-foreground: #ffffff;
+  --accent-soft: rgb(40 95 189 / 9%);
+
+  --border: rgb(15 23 42 / 10%);
+  --border-strong: rgb(15 23 42 / 18%);
+
+  --header-background: rgb(247 249 252 / 90%);
+  --selection-background: #285fbd;
+  --selection-foreground: #ffffff;
+
+  --shadow-color: rgb(15 23 42 / 8%);
+}
+
+/* ========================================
+   3. GLOBAL RESET
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease;
+}
+
+/* ========================================
+   4. SHARED ELEMENT DEFAULTS
+======================================== */
+
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  /* color: inherit; */
+  text-decoration: none;
+}
+
+/* button {
+  color: inherit;
+} */
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--selection-background);
+  color: var(--selection-foreground);
+}
+
+/* ========================================
+   5. ACCESSIBILITY & INTERACTION
+======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+a,
+button {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
