@@ -4,11 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navigation = [
-  { label: "About", href: "#about", number: "01" },
-  { label: "Services", href: "#services", number: "02" },
-  { label: "Expertise", href: "#expertise", number: "03" },
-  { label: "Projects", href: "#projects", number: "04" },
-  { label: "Contact", href: "#contact", number: "05" },
+  { label: "About", href: "/#about", number: "01" },
+  { label: "Services", href: "/#services", number: "02" },
+  { label: "Expertise", href: "/#expertise", number: "03" },
+  { label: "Projects", href: "/#projects", number: "04" },
+  { label: "Contact", href: "/#contact", number: "05" },
+  { label: "Process", href: "/sdlc", number: "06" },
 ];
 
 const socialLinks = [
