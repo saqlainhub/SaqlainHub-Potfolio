@@ -30,6 +30,7 @@ export default function RootLayout({
             `,
           }}
         />
+        <meta name="google-site-verification" content="bBB7GXc_KksNbsxQhIMHq4v1q0wuuhW_oxgox7Kjkv4" />
       </head>
       <body>{children}</body>
     </html>
