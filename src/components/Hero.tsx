@@ -1,7 +1,16 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import type { PointerEvent } from "react";
+
+import {
+  FaLinkedinIn,
+  FaInstagram,
+  FaFacebookF,
+  FaGithub,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 const services = [
   {
@@ -43,18 +52,62 @@ const services = [
 ];
 
 const technologies = [
-  "Html", "CSS", "TailwindCSS", "JavaScript", "TypeScript", "React", "Next",
-  "Python", "FastAPI", "Pydantic", "PostgreSQL", "MongoDB", "Prisma", "SQLAlchemy",
-  "LLMs", "RAG", "Tool Calling", "Agentic AI", "Responsive Design", "Auth", "OAuth",
-  "REST API", "GraphQL", "Deployment"
+  "HTML5",
+  "CSS3",
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Tailwind CSS",
+  "UI/UX",
+  "Python",
+  "FastAPI",
+  "Pydantic",
+  "REST APIs",
+  "GraphQL",
+  "WebSockets",
+  "Background Jobs",
+  "PostgreSQL",
+  "Prisma",
+  "SQLAlchemy",
+  "Redis",
+  "LLMs",
+  "RAG",
+  "Embeddings",
+  "Tool Calling",
+  "AI Agents",
+  "Auth",
+  "APIs",
+  "Git",
+  "Deployment",
 ];
 
 const socialLinks = [
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/saqlainhub1097/", mark: "in" },
-  { name: "Instagram", href: "https://www.instagram.com/saqlainhub1097/", mark: "ig" },
-  { name: "Facebook", href: "https://www.facebook.com/saqlain1097/", mark: "f" },
-  { name: "GitHub", href: "https://github.com/saqlainhub/", mark: "gh" },
-  { name: "WhatsApp", href: "https://wa.me/923454409621", mark: "wa" },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/saqlainhub1097/",
+    icon: FaLinkedinIn,
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/saqlainhub1097/",
+    icon: FaInstagram,
+  },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/saqlain1097/",
+    icon: FaFacebookF,
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/saqlainhub/",
+    icon: FaGithub,
+  },
+  {
+    name: "WhatsApp",
+    href: "https://wa.me/923454409621",
+    icon: FaWhatsapp,
+  },
 ];
 
 function ServiceVisual({ type }: { type: string }) {
@@ -76,8 +129,12 @@ function ServiceVisual({ type }: { type: string }) {
                 </svg>
               </div>
               <div>
-                <p className="text-xs font-semibold text-[var(--foreground)]">Knowledge assistant</p>
-                <p className="text-[10px] text-[var(--foreground-muted)]">Customer workspace</p>
+                <p className="text-xs font-semibold text-[var(--foreground)]">
+                  Knowledge assistant
+                </p>
+                <p className="text-[10px] text-[var(--foreground-muted)]">
+                  Customer workspace
+                </p>
               </div>
             </div>
             <span className="size-2 rounded-full bg-[var(--accent)]" />
@@ -117,8 +174,12 @@ function ServiceVisual({ type }: { type: string }) {
         <div className="relative flex min-h-[172px] flex-col justify-between gap-3">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold text-[var(--foreground)]">Workflow builder</p>
-              <p className="mt-1 text-[10px] text-[var(--foreground-muted)]">Example automation flow</p>
+              <p className="text-xs font-semibold text-[var(--foreground)]">
+                Workflow builder
+              </p>
+              <p className="mt-1 text-[10px] text-[var(--foreground-muted)]">
+                Example automation flow
+              </p>
             </div>
             <div className="rounded-lg border border-[var(--border)] px-2.5 py-1.5 text-[10px] text-[var(--foreground-secondary)]">
               Workflow
@@ -132,16 +193,20 @@ function ServiceVisual({ type }: { type: string }) {
               { title: "Action", icon: "action" },
             ].map((item, i) => (
               <div key={item.title} className="contents">
-                <div className={`rounded-lg border p-2 text-center ${
-                  i === 1
-                    ? "border-[var(--accent)]/40 bg-[var(--accent-soft)]"
-                    : "border-[var(--border)] bg-[var(--surface)]"
-                }`}>
-                  <div className={`mx-auto grid size-7 place-items-center rounded-lg ${
+                <div
+                  className={`rounded-lg border p-2 text-center ${
                     i === 1
-                      ? "bg-[var(--surface)] text-[var(--accent)]"
-                      : "bg-[var(--accent-soft)] text-[var(--accent)]"
-                  }`}>
+                      ? "border-[var(--accent)]/40 bg-[var(--accent-soft)]"
+                      : "border-[var(--border)] bg-[var(--surface)]"
+                  }`}
+                >
+                  <div
+                    className={`mx-auto grid size-7 place-items-center rounded-lg ${
+                      i === 1
+                        ? "bg-[var(--surface)] text-[var(--accent)]"
+                        : "bg-[var(--accent-soft)] text-[var(--accent)]"
+                    }`}
+                  >
                     {item.icon === "trigger" && (
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="size-4">
                         <path d="M12 3v4m0 10v4M3 12h4m10 0h4" />
@@ -159,16 +224,23 @@ function ServiceVisual({ type }: { type: string }) {
                       </svg>
                     )}
                   </div>
-                  <p className="mt-1.5 text-[10px] font-medium text-[var(--foreground)]">{item.title}</p>
+                  <p className="mt-1.5 text-[10px] font-medium text-[var(--foreground)]">
+                    {item.title}
+                  </p>
                 </div>
-                {i < 2 && <span className="text-xs text-[var(--accent)]">→</span>}
+                {i < 2 && (
+                  <span className="text-xs text-[var(--accent)]">→</span>
+                )}
               </div>
             ))}
           </div>
 
           <div className="flex flex-wrap gap-1.5">
             {["API integrations", "Tool calling", "Business logic"].map((tag) => (
-              <span key={tag} className="rounded-full border border-[var(--border)] px-2 py-1 text-[10px] text-[var(--foreground-secondary)]">
+              <span
+                key={tag}
+                className="rounded-full border border-[var(--border)] px-2 py-1 text-[10px] text-[var(--foreground-secondary)]"
+              >
                 {tag}
               </span>
             ))}
@@ -180,8 +252,12 @@ function ServiceVisual({ type }: { type: string }) {
         <div className="relative flex min-h-[172px] flex-col gap-3">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold text-[var(--foreground)]">Application overview</p>
-              <p className="mt-1 text-[10px] text-[var(--foreground-muted)]">A connected software system</p>
+              <p className="text-xs font-semibold text-[var(--foreground)]">
+                Application overview
+              </p>
+              <p className="mt-1 text-[10px] text-[var(--foreground-muted)]">
+                A connected software system
+              </p>
             </div>
             <span className="rounded-full border border-[var(--border)] px-2.5 py-1 text-[10px] text-[var(--foreground-muted)]">
               Web app
@@ -192,11 +268,14 @@ function ServiceVisual({ type }: { type: string }) {
             <div className="space-y-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-2">
               <div className="mb-3 h-1.5 w-10 rounded-full bg-[var(--accent)] opacity-60" />
               {["Overview", "Records", "Settings"].map((item, i) => (
-                <div key={item} className={`rounded-md px-1.5 py-1 text-[9px] ${
-                  i === 0
-                    ? "bg-[var(--accent-soft)] text-[var(--accent)]"
-                    : "text-[var(--foreground-muted)]"
-                }`}>
+                <div
+                  key={item}
+                  className={`rounded-md px-1.5 py-1 text-[9px] ${
+                    i === 0
+                      ? "bg-[var(--accent-soft)] text-[var(--accent)]"
+                      : "text-[var(--foreground-muted)]"
+                  }`}
+                >
                   {item}
                 </div>
               ))}
@@ -204,24 +283,40 @@ function ServiceVisual({ type }: { type: string }) {
 
             <div className="min-w-0 space-y-2 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-2.5">
               <div>
-                <p className="text-[10px] text-[var(--foreground-muted)]">Workspace</p>
-                <p className="mt-0.5 text-sm font-semibold text-[var(--foreground)]">Dashboard</p>
+                <p className="text-[10px] text-[var(--foreground-muted)]">
+                  Workspace
+                </p>
+                <p className="mt-0.5 text-sm font-semibold text-[var(--foreground)]">
+                  Dashboard
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-2">
                 <div className="rounded-lg border border-[var(--border)] p-1.5">
-                  <p className="text-[9px] text-[var(--foreground-muted)]">Frontend</p>
-                  <p className="mt-0.5 text-[10px] font-semibold text-[var(--foreground)]">Next.js</p>
+                  <p className="text-[9px] text-[var(--foreground-muted)]">
+                    Frontend
+                  </p>
+                  <p className="mt-0.5 text-[10px] font-semibold text-[var(--foreground)]">
+                    Next.js
+                  </p>
                 </div>
                 <div className="rounded-lg border border-[var(--border)] p-1.5">
-                  <p className="text-[9px] text-[var(--foreground-muted)]">Backend</p>
-                  <p className="mt-0.5 text-[10px] font-semibold text-[var(--foreground)]">FastAPI</p>
+                  <p className="text-[9px] text-[var(--foreground-muted)]">
+                    Backend
+                  </p>
+                  <p className="mt-0.5 text-[10px] font-semibold text-[var(--foreground)]">
+                    FastAPI
+                  </p>
                 </div>
               </div>
 
               <div className="flex h-6 items-end gap-1">
                 {[35, 60, 43, 78, 52, 88, 67, 100, 74, 90].map((height, i) => (
-                  <div key={i} style={{ height: `${height}%` }} className="flex-1 rounded-t-sm bg-[var(--accent)] opacity-70" />
+                  <div
+                    key={i}
+                    style={{ height: `${height}%` }}
+                    className="flex-1 rounded-t-sm bg-[var(--accent)] opacity-70"
+                  />
                 ))}
               </div>
             </div>
@@ -233,8 +328,12 @@ function ServiceVisual({ type }: { type: string }) {
         <div className="relative flex min-h-[172px] flex-col justify-between gap-3">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold text-[var(--foreground)]">Knowledge explorer</p>
-              <p className="mt-1 text-[10px] text-[var(--foreground-muted)]">Search across documents</p>
+              <p className="text-xs font-semibold text-[var(--foreground)]">
+                Knowledge explorer
+              </p>
+              <p className="mt-1 text-[10px] text-[var(--foreground-muted)]">
+                Search across documents
+              </p>
             </div>
             <div className="grid size-8 place-items-center rounded-lg bg-[var(--accent-soft)] text-[var(--accent)]">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className="size-4">
@@ -252,15 +351,26 @@ function ServiceVisual({ type }: { type: string }) {
             <span className="truncate text-xs text-[var(--foreground-muted)]">
               Search policies, guides, files...
             </span>
-            <span className="ml-auto text-[10px] text-[var(--foreground-muted)]">↵</span>
+            <span className="ml-auto text-[10px] text-[var(--foreground-muted)]">
+              ↵
+            </span>
           </div>
 
           <div className="space-y-1.5">
             {[
-              { title: "Product documentation", detail: "Relevant passage · Section 2" },
-              { title: "Internal policy guide", detail: "Related result · Section 4" },
+              {
+                title: "Product documentation",
+                detail: "Relevant passage · Section 2",
+              },
+              {
+                title: "Internal policy guide",
+                detail: "Related result · Section 4",
+              },
             ].map((item, i) => (
-              <div key={item.title} className="flex items-center gap-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-2.5">
+              <div
+                key={item.title}
+                className="flex items-center gap-2.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-2.5"
+              >
                 <div className="grid size-7 shrink-0 place-items-center rounded-lg bg-[var(--accent-soft)] text-[var(--accent)]">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="size-4">
                     <path d="M6 3h8l4 4v14H6z" />
@@ -268,10 +378,18 @@ function ServiceVisual({ type }: { type: string }) {
                   </svg>
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-xs font-medium text-[var(--foreground)]">{item.title}</p>
-                  <p className="mt-0.5 truncate text-[10px] text-[var(--foreground-muted)]">{item.detail}</p>
+                  <p className="truncate text-xs font-medium text-[var(--foreground)]">
+                    {item.title}
+                  </p>
+                  <p className="mt-0.5 truncate text-[10px] text-[var(--foreground-muted)]">
+                    {item.detail}
+                  </p>
                 </div>
-                {i === 0 && <span className="ml-auto shrink-0 text-[10px] text-[var(--accent)]">Best match</span>}
+                {i === 0 && (
+                  <span className="ml-auto shrink-0 text-[10px] text-[var(--accent)]">
+                    Best match
+                  </span>
+                )}
               </div>
             ))}
           </div>
@@ -284,6 +402,122 @@ function ServiceVisual({ type }: { type: string }) {
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [paused, setPaused] = useState(false);
+
+  const tickerRef = useRef<HTMLDivElement>(null);
+  const tickerTrackRef = useRef<HTMLDivElement>(null);
+
+  const dragState = useRef({
+    isDragging: false,
+    startX: 0,
+    startScrollLeft: 0,
+    startPointerId: -1,
+  });
+
+  const tickerHovered = useRef(false);
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    const ticker = tickerRef.current;
+    const track = tickerTrackRef.current;
+
+    if (!ticker || !track || event.button !== 0) return;
+
+    dragState.current = {
+      isDragging: true,
+      startX: event.clientX,
+      startScrollLeft: ticker.scrollLeft,
+      startPointerId: event.pointerId,
+    };
+
+    ticker.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const ticker = tickerRef.current;
+    const track = tickerTrackRef.current;
+
+    if (!ticker || !track || !dragState.current.isDragging) return;
+
+    const halfWidth = track.scrollWidth / 2;
+
+    if (halfWidth <= 0) return;
+
+    const delta = event.clientX - dragState.current.startX;
+    const desiredPosition = dragState.current.startScrollLeft - delta;
+
+    // Keep dragging within the first copy so the loop remains seamless.
+    const normalizedPosition =
+      ((desiredPosition % halfWidth) + halfWidth) % halfWidth;
+
+    ticker.scrollLeft = normalizedPosition;
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (
+      dragState.current.isDragging &&
+      dragState.current.startPointerId === event.pointerId
+    ) {
+      dragState.current.isDragging = false;
+      dragState.current.startPointerId = -1;
+    }
+  };
+
+  const handlePointerEnter = () => {
+    tickerHovered.current = true;
+  };
+
+  const handlePointerLeave = () => {
+    tickerHovered.current = false;
+  };
+
+  useEffect(() => {
+    const ticker = tickerRef.current;
+    const track = tickerTrackRef.current;
+
+    if (!ticker || !track) return;
+
+    let animationFrame = 0;
+    let previousTime = 0;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // Automatic scrolling speed, in pixels per second.
+    const speed = 100;
+
+    const animate = (time: number) => {
+      if (previousTime === 0) {
+        previousTime = time;
+      }
+
+      const elapsed = Math.min((time - previousTime) / 1000, 0.05);
+      previousTime = time;
+
+      const halfWidth = track.scrollWidth / 2;
+
+      if (
+        !reducedMotion &&
+        !tickerHovered.current &&
+        !dragState.current.isDragging &&
+        halfWidth > 0
+      ) {
+        ticker.scrollLeft += speed * elapsed;
+
+        // Reset to the equivalent position in the first copy.
+        if (ticker.scrollLeft >= halfWidth) {
+          ticker.scrollLeft -= halfWidth;
+        }
+      }
+
+      animationFrame = window.requestAnimationFrame(animate);
+    };
+
+    animationFrame = window.requestAnimationFrame(animate);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
 
   useEffect(() => {
     if (paused) return;
@@ -302,21 +536,26 @@ export default function Hero() {
   }
 
   function previousSlide() {
-    setActiveSlide((current) => (current - 1 + services.length) % services.length);
+    setActiveSlide(
+      (current) => (current - 1 + services.length) % services.length
+    );
   }
 
   return (
-    <section aria-labelledby="hero-title" className="relative overflow-hidden"
-    style={{
+    <section
+      aria-labelledby="hero-title"
+      className="relative overflow-hidden"
+      style={{
         background: "var(--background)",
         borderColor: "var(--border)",
         color: "var(--foreground)",
-      }}>
-
-        <div className="pointer-events-none absolute -top-36 left-1/2 h-80 w-[min(85vw,800px)] -translate-x-1/2 rounded-full opacity-20 blur-[120px]"
+      }}
+    >
+      <div
+        className="pointer-events-none absolute -top-36 left-1/2 h-80 w-[min(85vw,800px)] -translate-x-1/2 rounded-full opacity-20 blur-[120px]"
         style={{ background: "var(--accent)" }}
       />
-      
+
       <div className="pointer-events-none absolute -left-40 top-10 size-96 rounded-full bg-[var(--accent)] opacity-[0.045] blur-[100px]" />
 
       <div className="mx-auto grid w-[calc(100%-40px)] max-w-[1160px] items-center gap-9 py-8 sm:w-[calc(100%-64px)] sm:gap-10 sm:py-10 lg:min-h-[calc(100svh-140px)] lg:grid-cols-[1fr_0.95fr] lg:gap-10 lg:py-6">
@@ -337,9 +576,8 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 max-w-[510px] text-base leading-7 text-[var(--foreground-secondary)] sm:mt-5 sm:text-lg sm:leading-8">
-            I build full-stack applications, intelligent support systems,
-            and AI-powered workflows that help businesses solve practical
-            problems.
+            I build full-stack applications and AI-powered systems that turn
+            complex problems into practical, reliable software.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -359,24 +597,31 @@ export default function Hero() {
           </div>
 
           <div className="mt-6 flex items-center gap-3">
-            <span className="mr-1 text-xs text-[var(--foreground-muted)]">Connect</span>
+            <span className="mr-1 text-xs text-[var(--foreground-muted)]">
+              Connect
+            </span>
 
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={social.name}
-                title={social.name}
-                className="group relative grid size-8 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[11px] font-bold lowercase text-[var(--foreground-secondary)] no-underline transition-all duration-200 hover:-translate-y-1 hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)]"
-              >
-                {social.mark}
-                <span className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-2 -translate-x-1/2 translate-y-1 rounded-md border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--foreground)] opacity-0 shadow-lg transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
-                  {social.name}
-                </span>
-              </a>
-            ))}
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  title={social.name}
+                  className="group relative grid size-8 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground-secondary)] no-underline transition-all duration-200 hover:-translate-y-1 hover:border-[var(--accent)] hover:bg-[var(--accent-soft)] hover:text-[var(--accent)]"
+                >
+                  <Icon size={15} aria-hidden="true" />
+
+                  <span className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-2 -translate-x-1/2 translate-y-1 rounded-md border border-[var(--border)] bg-[var(--surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--foreground)] opacity-0 shadow-lg transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                    {social.name}
+                  </span>
+                </a>
+              );
+            })}
           </div>
         </div>
 
@@ -387,7 +632,11 @@ export default function Hero() {
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
           onBlur={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+            if (
+              !event.currentTarget.contains(
+                event.relatedTarget as Node | null
+              )
+            ) {
               setPaused(false);
             }
           }}
@@ -419,6 +668,7 @@ export default function Hero() {
                     <path d="m15 18-6-6 6-6" />
                   </svg>
                 </button>
+
                 <button
                   type="button"
                   onClick={nextSlide}
@@ -433,8 +683,6 @@ export default function Hero() {
             </div>
 
             <div key={service.number} className="service-copy pt-4">
-      
-
               <h2 className="mt-2.5 text-xl font-bold tracking-tight text-[var(--foreground)] sm:text-2xl">
                 {service.title}
               </h2>
@@ -442,8 +690,6 @@ export default function Hero() {
               <p className="mt-1.5 min-h-[60px] text-sm leading-[1.55rem] text-[var(--foreground-secondary)]">
                 {service.description}
               </p>
-
-             
             </div>
 
             <div key={`visual-${service.number}`} className="service-visual mt-3.5">
@@ -451,7 +697,10 @@ export default function Hero() {
             </div>
 
             <div className="mt-3 flex items-center justify-between gap-3">
-              <div className="flex items-center gap-1.5" aria-label={`Slide ${activeSlide + 1} of ${services.length}`}>
+              <div
+                className="flex items-center gap-1.5"
+                aria-label={`Slide ${activeSlide + 1} of ${services.length}`}
+              >
                 {services.map((item, index) => (
                   <button
                     key={item.number}
@@ -482,20 +731,37 @@ export default function Hero() {
               )}
             </div>
           </div>
-
-
         </div>
       </div>
 
       {/* Technology ticker */}
       <div className="relative border-y border-[var(--border)] bg-[var(--background-secondary)]">
         <div className="mx-auto flex max-w-[1440px] items-center gap-4 overflow-hidden py-3">
-          <span className="hidden sm:block z-10 ml-5 shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground-muted)] sm:ml-8">
+          <span className="z-10 ml-5 hidden shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground-muted)] sm:ml-8 sm:block">
             My toolkit
           </span>
 
-          <div className="ticker-viewport min-w-0 flex-1 overflow-hidden">
-            <div className="ticker-track flex w-max items-center">
+          <div
+            ref={tickerRef}
+            className="ticker-viewport min-w-0 flex-1 cursor-grab select-none overflow-x-auto overflow-y-hidden active:cursor-grabbing"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerUp}
+            onLostPointerCapture={handlePointerUp}
+            onPointerEnter={handlePointerEnter}
+            onPointerLeave={handlePointerLeave}
+            style={{
+              touchAction: "pan-y",
+              scrollbarWidth: "none",
+              WebkitOverflowScrolling: "touch",
+            }}
+            aria-label="Technology toolkit. Drag horizontally to explore."
+          >
+            <div
+              ref={tickerTrackRef}
+              className="ticker-track flex w-max items-center"
+            >
               {[0, 1].map((copy) => (
                 <div
                   key={copy}
@@ -505,6 +771,7 @@ export default function Hero() {
                   {technologies.map((technology) => (
                     <span
                       key={`${copy}-${technology}`}
+                      draggable={false}
                       className="mx-2.5 inline-flex items-center gap-2 whitespace-nowrap text-xs font-medium text-[var(--foreground-secondary)] sm:mx-4"
                     >
                       <span className="size-1.5 rounded-full bg-[var(--accent)] opacity-70" />
@@ -524,12 +791,17 @@ export default function Hero() {
           animation: service-enter 320ms ease both;
         }
 
-        .ticker-track {
-          animation: ticker-scroll 34s linear infinite;
+        .ticker-viewport {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
 
-        .ticker-viewport:hover .ticker-track {
-          animation-play-state: paused;
+        .ticker-viewport::-webkit-scrollbar {
+          display: none;
+        }
+
+        .ticker-track {
+          will-change: auto;
         }
 
         .carousel-progress {
@@ -548,19 +820,17 @@ export default function Hero() {
         }
 
         @keyframes progress {
-          from { width: 0%; }
-          to { width: 100%; }
-        }
-
-        @keyframes ticker-scroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+          from {
+            width: 0%;
+          }
+          to {
+            width: 100%;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
           .service-copy,
           .service-visual,
-          .ticker-track,
           .carousel-progress {
             animation: none;
           }

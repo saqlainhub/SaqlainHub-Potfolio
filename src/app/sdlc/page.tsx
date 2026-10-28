@@ -888,7 +888,7 @@ export default function SDLCPage() {
 
       <main id="sdlc" className="overflow-hidden">
         {/* Hero */}
-         <section className="relative isolate overflow-hidden">
+         <section className="relative isolate overflow-hidden" id="overview">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[480px] w-[min(90vw,900px)] -translate-x-1/2 rounded-full opacity-[0.14] blur-[120px]"

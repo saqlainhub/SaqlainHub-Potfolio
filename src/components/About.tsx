@@ -88,8 +88,7 @@ export default function About() {
           </h2>
 
           <p className="mt-4 max-w-xl text-sm leading-7 text-[var(--foreground-secondary)] sm:text-base">
-            A little about my background, the systems I build, and the
-            engineering skills I am developing.
+            A look at my engineering approach, the software I build, and my focus on practical AI solutions.
           </p>
         </div>
 
@@ -224,7 +223,7 @@ export default function About() {
                   Expertise Level
                 </p>
                 <p className="mt-1.5 text-sm font-semibold text-[var(--foreground)]">
-                  3+ Years · 10+ Projects
+                  2+ Years · 10+ Projects
                 </p>
               </div>
 

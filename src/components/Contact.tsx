@@ -191,7 +191,7 @@ export default function Contact() {
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)]/70 p-5 sm:p-7">
               <div className="mt-2">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
-                  Get in touch
+                  Click to approach
                 </p>
 
                 <h3 className="mt-2 text-xl font-semibold text-[var(--foreground)]">
@@ -473,7 +473,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[var(--accent)] px-5 py-4 text-sm font-semibold text-[#07111F] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] disabled:cursor-wait disabled:opacity-70"
+                className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[var(--accent)] px-5 py-4 text-sm font-semibold text-[var(--accent-foreground)] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] disabled:cursor-wait disabled:opacity-70"
               >
                 {isSubmitting ? "Sending message..." : "Send message"}
                 {!isSubmitting && (

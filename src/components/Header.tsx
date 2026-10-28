@@ -112,7 +112,7 @@ export default function Header() {
           </button>
 
           <a
-            href="#contact"
+            href="/#contact"
             className="hidden items-center gap-2 rounded-lg bg-[var(--accent)] px-4 py-2.5 text-[13px] font-semibold text-[var(--accent-foreground)] no-underline transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 sm:inline-flex"
           >
             Let&apos;s talk
@@ -185,7 +185,7 @@ export default function Header() {
           ))}
 
           <a
-            href="#contact"
+            href="/#contact"
             onClick={closeMobileMenu}
             tabIndex={mobileMenuOpen ? 0 : -1}
             className="mt-1 rounded-lg bg-[var(--accent)] px-3 py-3 text-center text-sm font-semibold text-[var(--accent-foreground)] no-underline transition-opacity hover:opacity-90"

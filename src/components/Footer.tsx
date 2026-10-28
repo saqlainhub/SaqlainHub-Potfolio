@@ -9,7 +9,7 @@ const navigation = [
   { label: "Expertise", href: "/#expertise", number: "03" },
   { label: "Projects", href: "/#projects", number: "04" },
   { label: "Contact", href: "/#contact", number: "05" },
-  { label: "Process", href: "/sdlc", number: "06" },
+  { label: "Process", href: "/sdlc/#overview", number: "06" },
 ];
 
 const socialLinks = [
