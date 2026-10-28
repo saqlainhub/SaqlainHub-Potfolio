@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -14,7 +15,6 @@ export default function Header() {
   const [theme, setTheme] = useState<"dark" | "light">("light");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Restore the saved theme when the component mounts.
   useEffect(() => {
     const savedTheme = localStorage.getItem("saqlainhub-theme");
 
@@ -26,7 +26,6 @@ export default function Header() {
     }
   }, []);
 
-  // Switch themes and persist the user's preference.
   function toggleTheme() {
     const nextTheme = theme === "dark" ? "light" : "dark";
 
@@ -39,11 +38,52 @@ export default function Header() {
     setMobileMenuOpen(false);
   }
 
+  function handleNavigation(
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) {
+    const hashIndex = href.indexOf("#");
+
+    // Let normal navigation handle links without a section hash.
+    if (hashIndex === -1) {
+      closeMobileMenu();
+      return;
+    }
+
+    const targetId = href.slice(hashIndex + 1);
+    const isHomePage = window.location.pathname === "/";
+
+    closeMobileMenu();
+
+    // On other pages, navigate to the homepage and its section.
+    if (!isHomePage) return;
+
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    event.preventDefault();
+
+    // Wait for the mobile menu to begin closing before measuring.
+    window.setTimeout(() => {
+      const header = document.querySelector("header");
+      const headerHeight = header?.getBoundingClientRect().height ?? 76;
+
+      const targetTop =
+        target.getBoundingClientRect().top + window.scrollY;
+
+      window.history.pushState(null, "", href);
+
+      window.scrollTo({
+        top: targetTop - headerHeight - 30,
+        behavior: "smooth",
+      });
+    }, 220);
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--header-background)] backdrop-blur-xl">
       <div className="mx-auto flex min-h-[76px] w-[calc(100%-40px)] max-w-[1160px] items-center justify-between gap-5 sm:w-[calc(100%-64px)]">
-
-        {/* Text-only brand */}
+        {/* Brand */}
         <a
           href="#home"
           aria-label="SaqlainHub home"
@@ -63,6 +103,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(event) => handleNavigation(event, link.href)}
               className="relative py-2 text-[13px] font-medium tracking-wide text-[var(--foreground-secondary)] no-underline transition-colors duration-200 hover:text-[var(--accent)]"
             >
               {link.label}
@@ -80,7 +121,6 @@ export default function Header() {
             className="grid size-10 place-items-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--foreground-secondary)] transition-all duration-200 hover:border-[var(--accent)] hover:text-[var(--accent)]"
           >
             {theme === "dark" ? (
-              /* Sun icon */
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -95,7 +135,6 @@ export default function Header() {
                 <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
               </svg>
             ) : (
-              /* Moon icon */
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -113,6 +152,7 @@ export default function Header() {
 
           <a
             href="/#contact"
+            onClick={(event) => handleNavigation(event, "/#contact")}
             className="hidden items-center gap-2 rounded-lg bg-[var(--accent)] px-4 py-2.5 text-[13px] font-semibold text-[var(--accent-foreground)] no-underline transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 sm:inline-flex"
           >
             Let&apos;s talk
@@ -123,7 +163,11 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              mobileMenuOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+            }
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             className="grid size-10 place-items-center rounded-lg border border-[var(--border)] text-[var(--foreground)] transition-colors hover:border-[var(--accent)] lg:hidden"
@@ -157,7 +201,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile navigation panel */}
+      {/* Mobile navigation */}
       <div
         id="mobile-navigation"
         className={`overflow-hidden border-t border-[var(--border)] transition-all duration-200 lg:hidden ${
@@ -176,7 +220,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              onClick={closeMobileMenu}
+              onClick={(event) => handleNavigation(event, link.href)}
               tabIndex={mobileMenuOpen ? 0 : -1}
               className="rounded-lg px-3 py-3 text-sm font-medium text-[var(--foreground-secondary)] no-underline transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--accent)]"
             >
@@ -186,7 +230,7 @@ export default function Header() {
 
           <a
             href="/#contact"
-            onClick={closeMobileMenu}
+            onClick={(event) => handleNavigation(event, "/#contact")}
             tabIndex={mobileMenuOpen ? 0 : -1}
             className="mt-1 rounded-lg bg-[var(--accent)] px-3 py-3 text-center text-sm font-semibold text-[var(--accent-foreground)] no-underline transition-opacity hover:opacity-90"
           >

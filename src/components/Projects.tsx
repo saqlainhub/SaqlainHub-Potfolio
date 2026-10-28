@@ -1330,7 +1330,7 @@ export default function Projects() {
         style={{ background: "var(--accent)" }}
       />
       
-      <div id="projects" className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+      <div id="projects" className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 ">
         <div className="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
             <p className="mb-3 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.17em] text-[var(--accent)] sm:text-xs">

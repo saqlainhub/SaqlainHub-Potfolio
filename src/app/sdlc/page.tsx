@@ -452,7 +452,7 @@ function PhaseSection({
     <section
       id={`phase-${phase.number}`}
       aria-labelledby={`phase-title-${phase.number}`}
-      className="scroll-mt-28 border-t border-[var(--border)] py-16 sm:py-20 lg:py-24"
+      className="border-t border-[var(--border)] py-16 sm:py-20 lg:py-24"
     >
       <div className="grid gap-9 lg:grid-cols-[0.76fr_1.24fr] lg:gap-14">
         {/* Phase introduction */}
@@ -886,9 +886,9 @@ export default function SDLCPage() {
     <>
       <Header />
 
-      <main id="sdlc" className="overflow-hidden">
+      <main  className="overflow-hidden">
         {/* Hero */}
-         <section className="relative isolate overflow-hidden" id="overview">
+         <section id="sdlc" className="relative isolate overflow-hidden" id="overview">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -top-40 left-1/2 -z-10 h-[480px] w-[min(90vw,900px)] -translate-x-1/2 rounded-full opacity-[0.14] blur-[120px]"

@@ -163,7 +163,7 @@ export default function Contact() {
         <div className="absolute bottom-0 right-[-8rem] h-80 w-80 rounded-full bg-sky-400/[0.06] blur-[130px]" />
       </div>
 
-      <div id="contact" className="container mx-auto max-w-7xl px-5 sm:px-8">
+      <div id="contact" className="container mx-auto max-w-7xl px-5 sm:px-8 ">
         {/* Section heading */}
         <div   className="mb-10 max-w-2xl sm:mb-14">
           <p className="mb-3 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.17em] text-[var(--accent)] sm:text-xs">

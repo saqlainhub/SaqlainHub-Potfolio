@@ -359,7 +359,7 @@ export default function Expertise() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
 
         {/* Main section heading */}
-        <div id="services" className="mb-8 max-w-2xl sm:mb-10">
+        <div id="services" className="mb-8 max-w-2xl sm:mb-10 ">
           <p className="mb-3 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.17em] text-[var(--accent)] sm:text-xs">
             <span className="h-px w-7 bg-[var(--accent)]" />
             What I Do
@@ -380,7 +380,7 @@ export default function Expertise() {
         </div>
 
         {/* SERVICES */}
-        <div className="scroll-mt-24">
+        <div >
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
@@ -504,8 +504,8 @@ export default function Expertise() {
     <section className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 overflow-hidden">
           
           {/* Technical section heading */}
-          <div className=" mb-8 max-w-2xl scroll-mt-24 sm:mb-10">
-            <p id="expertise" className="mb-3 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.17em] text-[var(--accent)] sm:text-xs">
+          <div className=" mb-8 max-w-2xl  sm:mb-10">
+            <p id="expertise" className="mb-3 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.17em] text-[var(--accent)] sm:text-xs ">
               <span className="h-px w-7 bg-[var(--accent)]" />
               Technical Expertise
             </p>
@@ -526,7 +526,7 @@ export default function Expertise() {
 
 
           {/* TECHNICAL ROADMAP */}
-          <div className="scroll-mt-24">
+          <div >
 
             <div
               className="relative rounded-3xl border p-4 sm:p-7 lg:p-9"
