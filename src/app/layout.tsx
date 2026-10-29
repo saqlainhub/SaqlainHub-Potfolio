@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "SaqlainHub | Saqlain Ahmad",
   description:
     "Portfolio of Saqlain Ahmad — Full Stack Software Engineer and AI Engineer.",
+  icons: {
+    icon: "/favicon.jpeg",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +33,10 @@ export default function RootLayout({
             `,
           }}
         />
-        <meta name="google-site-verification" content="bBB7GXc_KksNbsxQhIMHq4v1q0wuuhW_oxgox7Kjkv4" />
+        <meta
+          name="google-site-verification"
+          content="bBB7GXc_KksNbsxQhIMHq4v1q0wuuhW_oxgox7Kjkv4"
+        />
       </head>
       <body>{children}</body>
     </html>
